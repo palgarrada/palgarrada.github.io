@@ -136,4 +136,63 @@ function createPublicationElement(publication) {
   
   // Add links if they exist
   if (publication.links) {
-    const
+    const links = document.createElement('div');
+    links.className = 'pub-links';
+    
+    if (publication.links.pdf) {
+      const pdfLink = document.createElement('a');
+      pdfLink.href = publication.links.pdf;
+      pdfLink.textContent = '[PDF]';
+      pdfLink.target = '_blank'; // Abrir PDF en pestaña nueva
+      links.appendChild(pdfLink);
+    }
+    
+    if (publication.links.code) {
+      const codeLink = document.createElement('a');
+      codeLink.href = publication.links.code;
+      codeLink.textContent = '[Code]';
+      links.appendChild(codeLink);
+    }
+    
+    if (publication.links.project) {
+      const projectLink = document.createElement('a');
+      projectLink.href = publication.links.project;
+      projectLink.textContent = '[Project Page]';
+      links.appendChild(projectLink);
+    }
+    
+    content.appendChild(links);
+  }
+  
+  // Assemble the publication item (SIN FOTO)
+  pubItem.appendChild(content);
+  
+  return pubItem;
+}
+
+// Las funciones del modal (ventana emergente de imagen) se quedan, 
+// pero ya no se usan porque no hay imagen que clicar. No molesta dejarlas.
+function openModal(imageSrc) {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  modal.style.display = "block";
+  setTimeout(() => {
+    modal.classList.add('show');
+  }, 10);
+  modalImg.src = imageSrc;
+}
+
+function closeModal() {
+  const modal = document.getElementById('imageModal');
+  modal.classList.remove('show');
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 300);
+}
+
+window.onclick = function(event) {
+  const modal = document.getElementById('imageModal');
+  if (event.target == modal) {
+    closeModal();
+  }
+}
