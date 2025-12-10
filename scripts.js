@@ -36,7 +36,6 @@ function loadPublications() {
     })
     .catch(error => {
       console.error('Error loading publications:', error);
-      // Create fallback publications display if JSON loading fails
       displayFallbackPublications();
     });
 }
@@ -79,19 +78,14 @@ function createPublicationElement(publication) {
   const pubItem = document.createElement('div');
   pubItem.className = 'publication-item';
   
-  // Create thumbnail
-  const thumbnail = document.createElement('div');
-  thumbnail.className = 'pub-thumbnail';
-  thumbnail.onclick = () => openModal(publication.thumbnail);
-  
-  const thumbnailImg = document.createElement('img');
-  thumbnailImg.src = publication.thumbnail;
-  thumbnailImg.alt = `${publication.title} thumbnail`;
-  thumbnail.appendChild(thumbnailImg);
+  // --- SECCIÓN DE IMAGEN ELIMINADA AQUÍ ---
+  // Ya no creamos el div 'pub-thumbnail' ni la etiqueta 'img'
   
   // Create content container
   const content = document.createElement('div');
   content.className = 'pub-content';
+  // Forzamos que el contenido ocupe todo el ancho
+  content.style.width = '100%'; 
   
   // Add title
   const title = document.createElement('div');
@@ -106,8 +100,9 @@ function createPublicationElement(publication) {
   // Format authors with highlighting
   let authorsHTML = '';
   publication.authors.forEach((author, index) => {
-    if (author.includes('Author 3')) { // TODO: Highlight specific author
-      authorsHTML += `<span class="highlight-name">${author}</span>`;
+    // CAMBIO: Ahora resalta tu nombre automáticamente
+    if (author.includes('Pablo Algarrada')) { 
+      authorsHTML += `<span class="highlight-name"><strong>${author}</strong></span>`;
     } else {
       authorsHTML += author;
     }
@@ -141,63 +136,4 @@ function createPublicationElement(publication) {
   
   // Add links if they exist
   if (publication.links) {
-    const links = document.createElement('div');
-    links.className = 'pub-links';
-    
-    if (publication.links.pdf) {
-      const pdfLink = document.createElement('a');
-      pdfLink.href = publication.links.pdf;
-      pdfLink.textContent = '[PDF]';
-      links.appendChild(pdfLink);
-    }
-    
-    if (publication.links.code) {
-      const codeLink = document.createElement('a');
-      codeLink.href = publication.links.code;
-      codeLink.textContent = '[Code]';
-      links.appendChild(codeLink);
-    }
-    
-    if (publication.links.project) {
-      const projectLink = document.createElement('a');
-      projectLink.href = publication.links.project;
-      projectLink.textContent = '[Project Page]';
-      links.appendChild(projectLink);
-    }
-    
-    content.appendChild(links);
-  }
-  
-  // Assemble the publication item
-  pubItem.appendChild(thumbnail);
-  pubItem.appendChild(content);
-  
-  return pubItem;
-}
-
-// Modal functionality for viewing original images
-function openModal(imageSrc) {
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImage');
-  modal.style.display = "block";
-  setTimeout(() => {
-    modal.classList.add('show');
-  }, 10);
-  modalImg.src = imageSrc;
-}
-
-function closeModal() {
-  const modal = document.getElementById('imageModal');
-  modal.classList.remove('show');
-  setTimeout(() => {
-    modal.style.display = "none";
-  }, 300);
-}
-
-// Close modal when clicking outside the image
-window.onclick = function(event) {
-  const modal = document.getElementById('imageModal');
-  if (event.target == modal) {
-    closeModal();
-  }
-}
+    const
