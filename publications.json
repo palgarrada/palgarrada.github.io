@@ -1,16 +1,17 @@
 {
-  "title": "Managing the invisible: Intangible capital and hybrid governance in the historic centre of Barcelona (1988–2002)",
-  "authors": "Algarrada-Vera, P.",
-  "venue": "Intangible Capital",
-  "year": "2026",
-  "volume": "22(1)",
-  "pages": "392–410",
-  "doi": "https://doi.org/10.3926/ic.3454",
-  "url": "https://www.intangiblecapital.org/index.php/ic/article/view/3454/913",
-  "selected": true
-}
-{
   "publications": [
+    {
+      "title": "Managing the invisible: Intangible capital and hybrid governance in the historic centre of Barcelona (1988–2002)",
+      "authors": [
+        "Pablo Algarrada Vera"
+      ],
+      "venue": "Intangible Capital (2026)",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "pdf": "https://www.intangiblecapital.org/index.php/ic/article/view/3454/913"
+      }
+    },
     {
       "title": "La col·laboració publicoprivada en la transformació de Barcelona: aprenentatges de les agències mixtes",
       "authors": [
@@ -52,12 +53,4 @@
       "authors": [
         "Pablo Algarrada Vera"
       ],
-      "venue": "Universitat Autònoma de Barcelona - Bachelor's Thesis (2022)",
-      "selected": 0,
-      "award": "",
-      "links": {
-        "pdf": "https://ddd.uab.cat/record/263118"
-      }
-    }
-  ]
-}
+      "ven
